@@ -144,19 +144,17 @@
             [0, 4, 5, 1],
             [3, 2, 6, 7],
         ];
-
         const colors = [
-            [116, 186, 100],
+            [Math.floor(Math.random() * (255 - 0 + 1) + 0), Math.floor(Math.random() * (255 - 0 + 1) + 0), Math.floor(Math.random() * (255 - 0 + 1) + 0)],
+            [Math.floor(Math.random() * (255 - 0 + 1) + 0), Math.floor(Math.random() * (255 - 0 + 1) + 0), Math.floor(Math.random() * (255 - 0 + 1) + 0)],
+            [Math.floor(Math.random() * (255 - 0 + 1) + 0), Math.floor(Math.random() * (255 - 0 + 1) + 0), Math.floor(Math.random() * (255 - 0 + 1) + 0)],
             [0, 0, 0],
-            [116, 186, 10],
-            [255, 255, 0],
-            [110, 86, 100],
-            [255, 0, 255],
+            [Math.floor(Math.random() * (255 - 0 + 1) + 0), Math.floor(Math.random() * (255 - 0 + 1) + 0), Math.floor(Math.random() * (255 - 0 + 1) + 0)],
+            [Math.floor(Math.random() * (255 - 0 + 1) + 0), Math.floor(Math.random() * (255 - 0 + 1) + 0), Math.floor(Math.random() * (255 - 0 + 1) + 0)],
         ];
 
-        const camera = new Camera(400, 4);
+        const camera = new Camera(500, 5);
         const shape = new Shape(vertices, faces, colors);
-        const angle = 0;
 
         function arrayToRGB(color, shade) {
             return (
@@ -174,9 +172,7 @@
             canvas = document.querySelector("canvas");
             ctx = canvas.getContext("2d");
             resize();
-            window.requestAnimationFrame((time) => {
-                setInterval(loop, time);
-            });
+            setInterval(loop, 20);
         }
 
         function resize() {
@@ -194,7 +190,7 @@
 
             for (let i = 0; i < faces.length; i++) {
                 const index = avg_z[i].i;
-                const depth = avg_z[i].z * -1;
+                const depth = avg_z[i].z * -2;
                 const face = faces[index];
 
                 if (depth <= 0) continue;
@@ -210,9 +206,9 @@
                 ctx.fill();
             }
 
-            shape.rx += 0.01;
+            shape.rx += 0.06;
             shape.ry += 0.01;
-            shape.rz += 0.01;
+            shape.rz += 0.04;
         }
 
         init();
