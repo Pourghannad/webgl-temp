@@ -170,11 +170,13 @@
             );
         }
 
-        function startDemo() {
+        function init() {
             canvas = document.querySelector("canvas");
             ctx = canvas.getContext("2d");
             resize();
-            setInterval(loop, 15);
+            window.requestAnimationFrame((time) => {
+                setInterval(loop, time);
+            });
         }
 
         function resize() {
@@ -213,33 +215,7 @@
             shape.rz += 0.01;
         }
 
-        startDemo();
-
-        // document.addEventListener("mousedown", function (e) {
-        //     e.preventDefault();
-        //     let originX = 0,
-        //         originY = 0;
-        //     function dragHandler(e) {
-        //         const x = e.pageX;
-        //         const y = e.pageY;
-        //         if (originX || originY) {
-        //             if (e.altKey) {
-        //                 camera.cx += x - originX;
-        //                 camera.cy += y - originY;
-        //             } else {
-        //                 camera.ry += (x - originX) * DEG2RAD;
-        //                 camera.rx -= (y - originY) * DEG2RAD;
-        //             }
-        //         }
-        //         originX = x;
-        //         originY = y;
-        //     }
-        //     document.addEventListener("mousemove", dragHandler);
-        //     document.addEventListener("mouseup", function dragEndHandler() {
-        //         document.removeEventListener("mousemove", dragHandler);
-        //         document.removeEventListener("mouseup", dragEndHandler);
-        //     });
-        // });
+        init();
     </script>
 </body>
 
